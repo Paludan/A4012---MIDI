@@ -25,7 +25,7 @@ int main(int argc, const char *argv[]){
 				printf("Tempo: %d bpm\n\n", 60000000/tempo);
 			}
 
-			/* finder tonerne + oktav nr */
+			/* finder tonerne + oktav nr. */
 			if(hex[j] == 0x90){
 				int tone = hex[1+j];
 		 		printf("Oktav nr: %d\n", tone/12);
