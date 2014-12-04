@@ -64,26 +64,35 @@ int main(int argc, const char *argv[]){
     exit(EXIT_FAILURE);
   }
   // Variables
-  int note = 0x01, eventType = 0x01;
+  int note = 0x01, eventType = 0x01, counter = 0;
 
   /*Read and proces the hex array*/
   for(j = 0; j < numbers_in_text; j++){
-
     // Hops over any noto-on, note-off or metaevent start
     // Also stores the tones read after a note-on
     if(hex[j] == 0x00 && (hex[j + 1] == 0x90 || hex[j + 1] == 0xff)){
-      j += 2;
-      if(hex[j - 1] == 0x90){
-	note = hex[j];
-        fill_note(hex[j], &note_ar[i]);
+      counter = 1;
+      j += 3;
+      if(hex[j - 2] == 0x90){
+        note = hex[j - 1];
+        fill_note(hex[j - 1], &note_ar[i]);
         i++;
       }
-      else
-        eventType = hex[j];
+      else{
+        eventType = hex[j - 1];
+      }
     }
     else if(hex[j] == 0x80 && hex[j + 1] == note){
       j += 2;
       note = 0x01;
+      counter = 0;
+    }
+    if(counter){
+      // Here you can check for parameters inside a meta-event or MIDI-event
+    }
+    else{
+      // Here you can check for parameters outside a meta-event or MIDI-event
+      // e.g. between a note-off and the next MIDI-event or a meta-event
     }
   }
   
