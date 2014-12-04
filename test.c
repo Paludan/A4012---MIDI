@@ -5,3 +5,10 @@ int main(void){
 
   return 0;
 }
+
+
+
+
+void testFunk(void){
+  int stuff = 1337;
+}
