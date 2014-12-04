@@ -109,8 +109,8 @@ int main(int argc, const char *argv[]){
 }
 
 /**A function, that retrieves the hexadecimals from the files and also returns the number of files
-  *@param [FILE*] f: a pointer to the file the program is reading from
-  *@param [int] hexAr[]: an array of integers, that the information is stored in
+  *@param[FILE*] f: a pointer to the file the program is reading from
+  *@param[int] hexAr[]: an array of integers, that the information is stored in
   */
 int getHex(FILE *f, int hexAr[]){
   int i = 0, c;
@@ -124,8 +124,8 @@ int getHex(FILE *f, int hexAr[]){
 }
 
 /**A function to count the number of notes in the entire song
-  *@param [int] hex[]: an array with the stored information from the file
-  *@param [int] ammount: an integer holding the total number of characters in the array
+  *@param[int] hex[]: an array with the stored information from the file
+  *@param[int] ammount: an integer holding the total number of characters in the array
  */
 int countNotes(int hex[], int ammount){
   int i = 0, res = 0;
@@ -138,9 +138,9 @@ int countNotes(int hex[], int ammount){
 }
 
 /**A function, that fills out the song data
-  *@param [data*] data: a pointer to a structure containing the tempo and mode of the song
-  *@param [int] hex[]:the array of integers read from the file
-  *@param [int] numbersInText: the total ammount of integers in the array
+  *@param[data*] data: a pointer to a structure containing the tempo and mode of the song
+  *@param[int] hex[]:the array of integers read from the file
+  *@param[int] numbersInText: the total ammount of integers in the array
   */
 void fillSongData(data *data, int hex[], int numbersInText){
   int j;
@@ -172,8 +172,8 @@ void findNoteLength (double x, int *high, int *low){
 }
 
 /**A function to fill out each of the structures of type note
-  *@param [int] iTone: the value of the hexadecimal collected on the "tone"-spot
-  *@param [note*] note: a pointer to a note-structure
+  *@param[int] iTone: the value of the hexadecimal collected on the "tone"-spot
+  *@param[note*] note: a pointer to a note-structure
 */
 void fillNote(int iTone, note *note){
   note->tone = iTone % 12;
@@ -181,7 +181,7 @@ void fillNote(int iTone, note *note){
 }
 
 /**A function to print the note
-  *@param [note] note: the note structure to be printed
+  *@param[note] note: the note structure to be printed
   */
 void printNote(note note){
   printf("Tone: ");
@@ -205,7 +205,7 @@ void printNote(note note){
 }
 
 /**A function to print out the overall data of the song, tempo and mode
-  *@param [data] data: the data to be printed
+  *@param[data] data: the data to be printed
   */
 void printSongData(data data){
   printf("Tempo: %d\nMode: ", data.tempo);
