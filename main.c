@@ -41,7 +41,7 @@ int main(int argc, const char *argv[]){
     printf("Memory allokation failed, bye!");
     exit(EXIT_FAILURE);
   }
-
+  printf("Lee er et kæmpe fuckhoved\n");
   /*Reading the data from the file*/
   numbers_in_text = get_hex(f, hex);
   fill_song_data(&data, hex, numbers_in_text);
