@@ -34,6 +34,12 @@ struct songData{
 };
 typedef struct songData data;
 
+struct pointSystem{
+  char *parameter;
+  int point;
+};
+typedef struct pointSystem points;
+
 /*Prototypes*/
 void findNoteLength(double x, int *, int *);
 void printNote(note);
@@ -215,4 +221,36 @@ void printSongData(data data){
     default: printf("unknown mode"); break;
   }
   putchar('\n');
+}
+
+void settingPoints(data data, note note){
+  points pointsData[4];
+  pointsData[0].parameter = "mode"; pointsData[1].parameter = "tempo";
+  pointsData[2].parameter = "length"; pointsData[3].parameter = "octave";
+  switch(data.mode){
+    case minor: pointsData[0].point = -5; break;
+    case major: pointsData[0].point = 5; break;
+  }
+  if(data.tempo < 60)
+    pointsData[1].point = -5;
+  else if(data.tempo >= 60 && data.tempo < 70)
+    pointsData[1].point = -4;
+  else if(data.tempo >= 70 && data.tempo < 80)
+    pointsData[1].point = -3;  
+  else if(data.tempo >= 80 && data.tempo < 90)
+    pointsData[1].point = -2;
+  else if(data.tempo >= 90 && data.tempo < 100)
+    pointsData[1].point = -1;
+  else if(data.tempo >= 100 && data.tempo < 120)
+    pointsData[1].point =  0;  
+  else if(data.tempo >= 120 && data.tempo < 130)
+    pointsData[1].point =  1;
+  else if(data.tempo >= 130 && data.tempo < 140)
+    pointsData[1].point =  2;
+  else if(data.tempo >= 140 && data.tempo < 150)
+    pointsData[1].point =  3;
+  else if(data.tempo >= 150 && data.tempo < 160)
+    pointsData[1].point =  4;
+  else if(data.tempo >  160)
+    pointsData[1].point =  5;
 }
